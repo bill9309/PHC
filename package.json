@@ -93,6 +93,7 @@
     "cssnano": "^3.3.2",
     "debug": "^2.2.0",
     "dotenv": "^2.0.0",
+    "eslint-plugin-mocha": "^4.11.0",
     "extract-text-webpack-plugin": "^1.0.0",
     "file-loader": "^0.8.4",
     "fs-extra": "^0.30.0",
@@ -138,6 +139,7 @@
     "yargs": "^4.0.0"
   },
   "devDependencies": {
+    "assert": "^1.4.1",
     "babel-core": "^6.26.0",
     "babel-eslint": "^6.1.2",
     "chai": "^3.4.1",
