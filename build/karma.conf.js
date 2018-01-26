@@ -14,14 +14,14 @@ const karmaConfig = {
       pattern: `./${config.dir_test}/test-bundler.js`,
       watched: false,
       served: true,
-      included: true
-    }
+      included: true,
+    },
   ],
   singleRun: !argv.watch,
   frameworks: ['mocha'],
   reporters: ['mocha'],
   preprocessors: {
-    [`${config.dir_test}/test-bundler.js`]: ['webpack']
+    [`${config.dir_test}/test-bundler.js`]: ['webpack'],
   },
   browsers: ['PhantomJS'],
   webpack: {
@@ -30,20 +30,20 @@ const karmaConfig = {
       ...webpackConfig.resolve,
       alias: {
         ...webpackConfig.resolve.alias,
-        sinon: 'sinon/pkg/sinon.js'
-      }
+        sinon: 'sinon/pkg/sinon.js',
+      },
     },
     plugins: [...webpackConfig.plugins, 'karma-phantomjs-launcher'],
     module: {
       noParse: [
-        /\/sinon\.js/
+        /\/sinon\.js/,
       ],
       loaders: webpackConfig.module.loaders.concat([
         {
           test: /sinon(\\|\/)pkg(\\|\/)sinon\.js/,
-          loader: 'imports?define=>false,require=>false'
-        }
-      ])
+          loader: 'imports?define=>false,require=>false',
+        },
+      ]),
     },
     // Enzyme fix, see:
     // https://github.com/airbnb/enzyme/issues/47
@@ -51,16 +51,16 @@ const karmaConfig = {
       ...webpackConfig.externals,
       'react/addons': true,
       'react/lib/ExecutionEnvironment': true,
-      'react/lib/ReactContext': 'window'
+      'react/lib/ReactContext': 'window',
     },
-    sassLoader: webpackConfig.sassLoader
+    sassLoader: webpackConfig.sassLoader,
   },
   webpackMiddleware: {
-    noInfo: true
+    noInfo: true,
   },
   coverageReporter: {
-    reporters: config.coverage_reporters
-  }
+    reporters: config.coverage_reporters,
+  },
 }
 
 if (config.globals.__COVERAGE__) {
@@ -69,7 +69,7 @@ if (config.globals.__COVERAGE__) {
     test: /\.(js|jsx)$/,
     include: new RegExp(config.dir_client),
     loader: 'isparta',
-    exclude: /node_modules/
+    exclude: /node_modules/,
   }]
 }
 
