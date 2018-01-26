@@ -11,6 +11,9 @@ const karmaConfig = {
   files: [
     './node_modules/phantomjs-polyfill/bind-polyfill.js',
     {
+      pattern: './src/test/*.js', included: true,
+    },
+    {
       pattern: `./${config.dir_test}/test-bundler.js`,
       watched: false,
       served: true,
