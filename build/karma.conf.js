@@ -33,7 +33,7 @@ const karmaConfig = {
         sinon: 'sinon/pkg/sinon.js'
       }
     },
-    plugins: webpackConfig.plugins,
+    plugins: [...webpackConfig.plugins, 'karma-phantomjs-launcher'],
     module: {
       noParse: [
         /\/sinon\.js/
