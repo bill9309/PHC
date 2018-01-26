@@ -12,10 +12,13 @@
     "__PROD__"     : false,
     "__DEBUG__"    : false,
     "__COVERAGE__" : false,
-    "__BASENAME__" : false
+    "__BASENAME__" : false,
+    "describe": false,
+    "it": false,
   },
   "plugins": [
-    "react"
+    "react",
+    "mocha"
   ],
   "rules": {
     "semi" : [2, "never"],
