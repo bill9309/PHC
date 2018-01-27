@@ -25,6 +25,7 @@ const karmaConfig = {
   reporters: ['mocha'],
   preprocessors: {
     [`${config.dir_test}/test-bundler.js`]: ['webpack'],
+    '/src/test/*.js': ['webpack'],
   },
   browsers: ['PhantomJS'],
   webpack: {
