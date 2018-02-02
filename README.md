@@ -1,5 +1,5 @@
 # Project Homeless Connect Flagship
-
+[![wercker status](https://app.wercker.com/status/a22bdc01031a5a278f6c9de7d0590c14/s/master "wercker status")](https://app.wercker.com/project/byKey/a22bdc01031a5a278f6c9de7d0590c14)
 React + Express powered client management system for PHC SF.
 
 ## What is PHC?
