@@ -296,7 +296,7 @@ const DemographicPartial = (props) => {
     generalHealth,
     skinHealth,
     dignityAndConfidence,
-    dentalHygiene, 
+    dentalHygiene,
     hygiene,
   } = props.fields
 
@@ -429,7 +429,7 @@ const DemographicPartial = (props) => {
       <Col
         xs={12}
         className={classes.formItemContainer}
-      > 
+      >
 
         <p>Please rate on a scale of 1 (bad) to 5 (great)</p>
       </Col>
@@ -686,7 +686,7 @@ export const CheckInForm = (props) => {
     generalHealth,
     skinHealth,
     dignityAndConfidence,
-    dentalHygiene, 
+    dentalHygiene,
     hygiene,
   }
 

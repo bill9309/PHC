@@ -4,9 +4,9 @@ export default (store) => ({
   path: 'login',
   getComponent (nextState, cb) {
     require.ensure([
-        './components/Login',
-        './modules/login',
-      ], (require) => {
+      './components/Login',
+      './modules/login',
+    ], (require) => {
       const Login = require('./components/Login').default
       const reducer = require('./modules/login').default
 
@@ -14,5 +14,5 @@ export default (store) => ({
 
       cb(null, Login)
     }, 'login')
-  }
+  },
 })

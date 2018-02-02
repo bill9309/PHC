@@ -31,10 +31,10 @@ const fields = [
   'learnedAboutEvent',
   'whereStaying',
 
-  'generalHealth', 
+  'generalHealth',
   'skinHealth',
   'dignityAndConfidence',
-  'dentalHygiene', 
+  'dentalHygiene',
   'hygiene',
 
   'isHomeless',

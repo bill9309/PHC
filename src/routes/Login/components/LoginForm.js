@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import classes from './LoginForm.scss'
-import { Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap'
 
 export const LoginForm = (props) => {
   let {

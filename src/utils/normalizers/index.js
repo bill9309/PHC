@@ -5,5 +5,5 @@ import dob from './dob'
 export default {
   ssn,
   phone,
-  dob
+  dob,
 }

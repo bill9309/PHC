@@ -59,7 +59,7 @@ export function login (password) {
       } else {
         dispatch(loginFailure())
 
-        setTimeout(() => dispatch(loginReset()), 3000);
+        setTimeout(() => dispatch(loginReset()), 3000)
       }
     })
     .catch(() => {

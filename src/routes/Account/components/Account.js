@@ -13,9 +13,9 @@ const CheckInRegistrationPartial = (props) => (
     </div>
 
     <LinkContainer to={{
-      pathname: "/check-in",
-      hash: "#new"
-      }}>
+      pathname: '/check-in',
+      hash: '#new',
+    }}>
 
       <Button
         bsStyle="primary"
