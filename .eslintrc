@@ -13,8 +13,8 @@
     "__DEBUG__"    : false,
     "__COVERAGE__" : false,
     "__BASENAME__" : false,
-    "describe": false,
-    "it": false,
+    "expect": false,
+    "test": false,
   },
   "plugins": [
     "react",

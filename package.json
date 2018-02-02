@@ -64,7 +64,7 @@
       }
     },
     "test": {
-      "command": "babel-node ./node_modules/karma/bin/karma start build/karma.conf",
+      "command": "jest",
       "env": {
         "NODE_ENV": "test",
         "DEBUG": "app:*"
@@ -164,11 +164,8 @@
     "karma": "^0.13.22",
     "karma-coverage": "^1.0.0",
     "karma-jasmine": "^1.1.1",
-    "karma-mocha": "^1.0.1",
-    "karma-mocha-reporter": "^2.0.0",
     "karma-phantomjs-launcher": "^1.0.4",
     "karma-webpack-with-fast-source-maps": "^1.9.2",
-    "mocha": "^2.2.5",
     "nodemon": "^1.8.1",
     "react-addons-test-utils": "^15.0.0",
     "redbox-react": "^1.2.2",
