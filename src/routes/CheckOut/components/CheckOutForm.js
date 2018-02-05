@@ -55,7 +55,7 @@ ServicesPartial.propTypes = {
 }
 
 const SatisfactionPartial = (props) => {
-  let {satisfaction, isOverallSatisfied, recommendation, hasUniqueService, uniqueServices} = props.fields
+  let {satisfaction, isOverallSatisfied, recommendation, wellBeing, hasUniqueService, uniqueServices} = props.fields
 
   return (
 
@@ -110,6 +110,28 @@ const SatisfactionPartial = (props) => {
           ))}
         </Row>
       </Col>
+
+      <Col
+        xs={12}
+        className={classes.formItemContainer}
+      >
+      <label>Do you feel better with your physical well being after this event? </label>
+      <Row>
+        {['1 😩', '2 🙁', '3 😕', '4 🙂', '5 😀'].map(value => (
+          <Col xs={2} key={value}>
+            <label>
+              <input
+                {...wellBeing}
+                type="radio"
+                value={value[0]}
+                checked={wellBeing.value === value[0]}
+              />
+              {value}
+            </label>
+          </Col>
+        ))}
+      </Row>
+    </Col>
 
       <Col xs={12} sm={6} className={classes.formItemContainer}>
         <label>
@@ -222,7 +244,8 @@ export const CheckOutForm = (props) => {
 
   const serviceFields = Object.keys(fields)
     .filter(fieldName => (fieldName !== 'Satisfaction' && fieldName !== 'Notes' && fieldName !== 'isOverallSatisfied'
-          && fieldName !== 'hasUniqueService' && fieldName !== 'uniqueServices' && fieldName !== 'recommendation'))
+          && fieldName !== 'hasUniqueService' && fieldName !== 'uniqueServices' && fieldName !== 'recommendation'
+          && fieldName !== 'wellBeing'))
     .reduce(
       (_fields, fieldName) => {
         _fields[fieldName] = fields[fieldName]
@@ -237,6 +260,7 @@ export const CheckOutForm = (props) => {
     hasUniqueService: fields.hasUniqueService,
     uniqueServices: fields.uniqueServices,
     recommendation: fields.recommendation,
+    wellBeing: fields.wellBeing,
   }
 
   const notesFields = {

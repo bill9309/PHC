@@ -65,7 +65,7 @@ export const FORM_FIELD_TO_SALESFORCE_FIELD = {
   //'Lunch': 'Lunch__c',
   //'Groceries': 'Groceries__c',
   'isOverallSatisfied': 'Overall_satisfied__c',
-
+  'wellBeing' : 'wellBeing__c',
   'recommendation': 'Event_recommendation__c',
   'uniqueServices': 'Unique_services__c',
   'hasUniqueService': 'hasUniqueService__c',
