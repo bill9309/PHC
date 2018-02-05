@@ -111,6 +111,10 @@ const SatisfactionPartial = (props) => {
         </Row>
       </Col>
 
+      <Col
+        xs={12}
+        className={classes.formItemContainer}
+      >
       <label>Do you feel better with your physical well being after this event? </label>
       <Row>
         {['1 😩', '2 🙁', '3 😕', '4 🙂', '5 😀'].map(value => (
