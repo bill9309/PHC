@@ -57,7 +57,7 @@ export function transformFieldForSalesforce (field, value) {
   } else if (field === 'isHomeless') {
     return value ? HousingPicklistValues.HOMELESS : HousingPicklistValues.HOUSED
   } else if (value instanceof Array) {
-    return transformArrayForSalesforce
+    return transformArrayForSalesforce(value)
   } else {
     return value
   }
@@ -68,7 +68,7 @@ export function transformFieldFromSalesforce (field, value) {
   if (field === 'Birthdate__c') {
     return transformDateFromSalesforce(value)
   } else if (field === 'Race__c') {
-    return transformArrayFromSalesforce
+    return transformArrayFromSalesforce(value)
   } else if (field === 'SS_Num__c') {
     if (value && value.length === 4) {
       return `00000${value}`
