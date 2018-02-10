@@ -1,3 +1,4 @@
+/* eslint react/prop-types: 0 */
 import React, { PropTypes } from 'react'
 import Select from 'react-select'
 import {
@@ -38,70 +39,97 @@ const demographicTooltip = (
 )
 
 const BasicInfoPartial = (props) => {
-  let {
-    firstName,
-    lastName,
-    socialSecurityNumber,
-    dateOfBirth,
-    phoneNumber,
-    emailAddress,
-  } = props.fields
-
+  const mapNamesToLables = {
+    'firstName': 'First Name',
+    'lastName': 'Last Name',
+    'socialSecurityNumber': 'Social Security Number',
+    'dateOfBirth': 'Date of Birth',
+    'phoneNumber': 'Phone Number',
+    'emailAddress': 'Email Address',
+  }
+  // TODO Change hardcoded form style to the following dynamic implementation
+  /*
+  return (
+    <Row>
+      {Object.keys(mapNamesToLables).map(name =>
+        <Col xs={12} sm={6} className={classes.inputGroup}>
+          <label className={classes.fieldName}>
+            {mapNamesToLables[name]}
+            {props.fields[name].touched && props.fields[name].error
+            && <span className={classes.errorMessage}>{props.fields[name].error}</span>}
+          </label>
+          <input className={classes.textInput} type="text" {...props.fields[name]} />
+        </Col>)}
+    </Row>
+  )
+  */
   return (
     <Row>
       <Col xs={12} sm={6} className={classes.inputGroup}>
-        <label className={classes.fieldName}>First Name {firstName.touched && firstName.error && <span className={classes.errorMessage}>{firstName.error}</span>}</label>
-        <input className={classes.textInput} type="text" {...firstName} />
+        <label className={classes.fieldName}>
+          First Name {props.fields['firstName'].touched && window['firstName'].error
+            && <span className={classes.errorMessage}>{window['firstName'].error}</span>}
+        </label>
+        <input className={classes.textInput} type="text" {...window['firstName']} />
       </Col>
 
       <Col xs={12} sm={6} className={classes.inputGroup}>
-        <label className={classes.fieldName}>Last Name {lastName.touched && lastName.error && <span className={classes.errorMessage}>{lastName.error}</span>}</label>
-        <input className={classes.textInput} type="text" {...lastName} />
+        <label className={classes.fieldName}>Last Name {window['lastName'].touched && window['lastName'].error
+          && <span className={classes.errorMessage}>{window['lastName'].error}</span>}
+        </label>
+        <input className={classes.textInput} type="text" {...window['lastName']} />
       </Col>
 
       <Col xs={12} sm={6} className={classes.inputGroup}>
         <label className={classes.fieldName}>
-          { "Social Security Number " }
+          {'Social Security Number'}
           <OverlayTrigger placement="right" overlay={identificationTooltip}>
-            <Glyphicon glyph="info-sign"/ >
+            <Glyphicon glyph="info-sign" />
           </OverlayTrigger>
-          {socialSecurityNumber.touched && socialSecurityNumber.error && <span className={classes.errorMessage}>{socialSecurityNumber.error}</span>}
+          {window['socialSecurityNumber'].touched && window['socialSecurityNumber'].error
+            && <span className={classes.errorMessage}>{window['socialSecurityNumber'].error}</span>}
         </label>
         <input
           className={classes.textInput}
           type="text"
-          {...socialSecurityNumber}
+          {...window['socialSecurityNumber']}
         />
       </Col>
 
       <Col xs={12} sm={6} className={classes.inputGroup}>
         <label className={classes.fieldName}>
-          Date of Birth (mm-dd-yyyy) {dateOfBirth.touched && dateOfBirth.error && <span className={classes.errorMessage}>{dateOfBirth.error}</span>}
+          Date of Birth (mm-dd-yyyy)
+          {window['dateOfBirth'].touched && window['dateOfBirth'].error
+            && <span className={classes.errorMessage}>{window['dateOfBirth'].error}</span>}
         </label>
         <input
           className={classes.textInput}
           type="text"
-          {...dateOfBirth}
+          {...window['dateOfBirth']}
         />
       </Col>
 
       <Col xs={12} sm={6} className={classes.inputGroup}>
         <label className={classes.fieldName}>
-          Phone {phoneNumber.touched && phoneNumber.error && <span className={classes.errorMessage}>{phoneNumber.error}</span>}
+          Phone
+          {window['phoneNumber'].touched && window['phoneNumber'].error
+          && <span className={classes.errorMessage}>{window['phoneNumber'].error}</span>}
         </label>
         <input
           className={classes.textInput}
           type="text"
-          {...phoneNumber}
+          {...window['phoneNumber']}
         />
       </Col>
 
       <Col xs={12} sm={6} className={classes.inputGroup}>
-        <label className={classes.fieldName}>Email Address {emailAddress.touched && emailAddress.error && <span className={classes.errorMessage}>{emailAddress.error}</span>}</label>
+        <label className={classes.fieldName}>Email Address
+          {window['emailAddress'].touched && window['emailAddress'].error
+          && <span className={classes.errorMessage}>{window['emailAddress'].error}</span>}</label>
         <input
           className={classes.textInput}
           type="email"
-          {...emailAddress}
+          {...window['emailAddress']}
         />
       </Col>
     </Row>
@@ -112,7 +140,7 @@ const GenderLGBTQPartial = (props) => {
   let {
     gender,
     isLGBTQ,
-  } = props.fields;
+  } = props.fields
 
   return (
     <Row>
@@ -633,7 +661,7 @@ const ServicesPartial = (props) => {
 export const CheckInForm = (props) => {
   let {
     fields: {
-      firstName, lastName, socialSecurityNumber, dateOfBirth, phoneNumber, emailAddress,
+      firstName, lastName, socialSecurityNumber, dateOfBirth, phoneNumber, emailAddress, address,
       gender, isLGBTQ,
       ethnicity, ethnicityOther, language, languageOther,
       hasBeenInFosterCare,
@@ -660,6 +688,7 @@ export const CheckInForm = (props) => {
     dateOfBirth,
     phoneNumber,
     emailAddress,
+    address,
   }
 
   const genderIsLGBTQFields = {

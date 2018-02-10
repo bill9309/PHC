@@ -108,7 +108,7 @@ function createOrUpdateAccount ({ fields, id }) {
     if (!response.ok) {
       throw Error('Unable to create or modify account.')
     }
-    return response;
+    return response
   })
 }
 
@@ -127,7 +127,7 @@ function createOrUpdateEventRegistration ({ fields, id }) {
     if (!response.ok) {
       throw Error('Unable to create or modify event registration.')
     }
-    return response;
+    return response
   })
 }
 
