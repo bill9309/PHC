@@ -282,7 +282,7 @@ const EthnicityLanguagePartial = (props) => {
                   key={_language}
                   value={_language}
                   checked={language.value === _language}
-                  onChange={(value) => language.onChange(value) && languageOther.onChange("")}
+                  onChange={(value) => language.onChange(value) && languageOther.onChange('')}
                 />
                 {_language}
               </label>
