@@ -40,3 +40,10 @@ deploy:
         key: $HEROKU_KEY
         user: $HEROKU_USER
         app-name: $HEROKU_APP_NAME
+
+deploy-salesforce-dev:
+  steps:
+    -heroku-deploy:
+        key: $SALESFORCE_HEROKU_KEY
+        user: $SALESFORCE_HEROKU_USER
+        app-name: $SALESFORCE_HEROKU_APP_NAME
