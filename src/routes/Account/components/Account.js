@@ -40,7 +40,7 @@ const AccountModal = (props) => (
 
 export const Account = (props) => (
   <div className={classes.container}>
-    <h3 className={classes.header}>{props.station === STATIONS.CHECK_IN ? "Welcome!" : "Goodbye!"}</h3>
+    <h3 className={classes.header}>{props.station === STATIONS.CHECK_IN ? 'Welcome!' : 'Goodbye!'}</h3>
 
     {props.station === STATIONS.CHECK_IN && <CheckInRegistrationPartial />}
 
