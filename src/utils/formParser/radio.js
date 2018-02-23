@@ -2,6 +2,18 @@
 import classes from '../../routes/CheckIn/components/CheckInForm.scss'
 import React from 'react'
 import { Col, Row, OverlayTrigger, Glyphicon, Tooltip } from 'react-bootstrap'
+
+function transformOption(option) {
+  switch (option) {
+    case 'Yes':
+      return 'true'
+    case 'No':
+      return 'false'
+    default:
+      return option
+  }
+}
+
 const parseRadio = (definition, props, index) => {
   const { name, title, hint, options } = definition
   const tooltipComponent = hint ? <Tooltip id="tooltip">{hint}</Tooltip> : null
@@ -23,8 +35,8 @@ const parseRadio = (definition, props, index) => {
               <input
                 {...props.fields[name]}
                 type="radio"
-                value={option}
-                checked={props.fields[name].value === option}
+                value={transformOption(option)}
+                checked={props.fields[name].value === transformOption(option)}
               />
               {option}
             </label>
