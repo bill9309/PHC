@@ -2,6 +2,7 @@ import parseRadio from './radio'
 import parseDropdown from './dropdown'
 import parseTextbox from './textbox'
 import parseCheckboxes from './checkboxes'
+import parseLabel from './label'
 import React from 'react'
 import { Row } from 'react-bootstrap'
 
@@ -15,6 +16,8 @@ const parseWidget = (widgetDefinition, props) => {
       return parseTextbox(widgetDefinition, props)
     case 'checkboxes':
       return parseCheckboxes(widgetDefinition, props)
+    case 'label':
+      return parseLabel(widgetDefinition)
     default:
       return null
   }
