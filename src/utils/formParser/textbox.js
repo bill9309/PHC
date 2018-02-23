@@ -3,11 +3,11 @@ import { Col, OverlayTrigger, Tooltip, Glyphicon } from 'react-bootstrap'
 import React from 'react'
 import classes from '../../routes/CheckIn/components/CheckInForm.scss'
 import 'react-select/dist/react-select.css'
-const parseTextbox = (definition, props) => {
+const parseTextbox = (definition, props, index) => {
   const { name, title, hint } = definition
   const tooltipComponent = hint ? <Tooltip id="tooltip">{hint}</Tooltip> : null
   return (
-    <Col xs={12} sm={6} className={classes.inputGroup}>
+    <Col xs={12} sm={6} className={classes.inputGroup} key={index}>
       <label className={classes.fieldName}>
         {title}
         {hint

@@ -2,11 +2,11 @@
 import classes from '../../routes/CheckIn/components/CheckInForm.scss'
 import React from 'react'
 import { Col, Row, OverlayTrigger, Glyphicon, Tooltip } from 'react-bootstrap'
-const parseRadio = (definition, props) => {
+const parseRadio = (definition, props, index) => {
   const { name, title, hint, options } = definition
   const tooltipComponent = hint ? <Tooltip id="tooltip">{hint}</Tooltip> : null
   return (
-    <Col xs={12} sm={6} className={classes.inputGroup}>
+    <Col xs={12} sm={6} className={classes.inputGroup} key={index}>
       <label className={classes.fieldName}>
       {title}
       {
@@ -17,8 +17,8 @@ const parseRadio = (definition, props) => {
       }
       </label>
       <Row>
-        {options.map(option =>
-          <Col xs={12}>
+        {options.map((option, index) =>
+          <Col xs={12} key={index}>
             <label>
               <input
                 {...props.fields[name]}

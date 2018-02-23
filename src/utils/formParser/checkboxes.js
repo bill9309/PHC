@@ -1,13 +1,13 @@
 /* eslint react/prop-types: 0 */
 import React from 'react'
 import { Col, Tooltip, OverlayTrigger, Glyphicon } from 'react-bootstrap'
-import classes from '../routes/CheckIn/components/CheckInForm.scss'
-import ArrayCheckbox from '../components/ArrayCheckbox'
-const parseCheckboxes = (definition, props) => {
+import classes from '../../routes/CheckIn/components/CheckInForm.scss'
+import ArrayCheckbox from '../../components/ArrayCheckbox'
+const parseCheckboxes = (definition, props, index) => {
   const { name, title, hint, options, other } = definition
   const tooltipComponent = hint ? <Tooltip id="tooltip">{hint}</Tooltip> : null
   return (
-    <Col xs={12} sm={6} className={classes.inputGroup}>
+    <Col xs={12} sm={6} className={classes.inputGroup} key={index}>
       <label className={classes.fieldName}>
         {title}
         {
@@ -47,7 +47,8 @@ const parseCheckboxes = (definition, props) => {
         }
       </div>
       {
-        props.fields[name + 'Other'].touched
+        props.fields[name + 'Other']
+        && props.fields[name + 'Other'].touched
         && props.fields[name + 'Other'].error
         && <span className={classes.errorMessage}>{props.fields[name + 'Other'].error}</span>
       }

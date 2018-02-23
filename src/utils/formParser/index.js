@@ -6,26 +6,25 @@ import parseLabel from './label'
 import React from 'react'
 import { Row } from 'react-bootstrap'
 
-const parseWidget = (widgetDefinition, props) => {
+const parseWidget = (widgetDefinition, props, index) => {
   switch (widgetDefinition.type) {
     case 'radio':
-      return parseRadio(widgetDefinition, props)
+      return parseRadio(widgetDefinition, props, index)
     case 'dropdown':
-      return parseDropdown(widgetDefinition, props)
+      return parseDropdown(widgetDefinition, props, index)
     case 'textbox':
-      return parseTextbox(widgetDefinition, props)
+      return parseTextbox(widgetDefinition, props, index)
     case 'checkboxes':
-      return parseCheckboxes(widgetDefinition, props)
+      return parseCheckboxes(widgetDefinition, props, index)
     case 'label':
-      return parseLabel(widgetDefinition)
+      return parseLabel(widgetDefinition, index)
     default:
       return null
   }
 }
 
 const parseForm = (formDefinition, props) => {
-  const widgets = formDefinition['definition']
-  return <Row>{widgets.map(widget => parseWidget(widget, props))}</Row>
+  return <Row>{formDefinition.map((widget, index) => parseWidget(widget, props, index))}</Row>
 }
 
 export default parseForm
