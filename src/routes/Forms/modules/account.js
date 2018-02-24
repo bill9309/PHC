@@ -5,9 +5,18 @@ import { UPDATE_INFO_REQUEST } from '../../CheckIn/modules/check-in'
 import { phcFetch } from '../../../utils/fetch'
 
 export function getFormData(type){
-  //search?name=${name}`)
-  console.log("here============================================");
-  return fetch(`/api/formtype/specific`)
-    .then((response) => response.json())
+  return fetch(`/api/formtype/specific`, {
+    headers : {
+      'Accept': 'application/json',
+    },
+    method: "GET",
+  })
+    .then((response) => {
+      if (response.ok) {
+        return response
+      } else {
+        throw Error('Error!')
+      }
+    })
     .then((json_content) => {console.log(json_content);});
 }
