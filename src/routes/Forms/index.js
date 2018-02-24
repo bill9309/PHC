@@ -2,7 +2,7 @@ import { injectReducer } from '../../store/reducers'
 import requireAuth from '../Login/utils'
 
 export default (store) => ({
-  path: 'formtype/:formname',
+  path: 'formtype/garbage',
   getComponent(nextState, next) {
 
     require.ensure(

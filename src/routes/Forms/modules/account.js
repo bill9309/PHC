@@ -7,7 +7,7 @@ import { phcFetch } from '../../../utils/fetch'
 export function getFormData(type){
   //search?name=${name}`)
   console.log("here============================================");
-  return fetch(`/api/formtype`)
-    .then((response) => {console.log(response);})
+  return fetch(`/api/formtype/specific`)
+    .then((response) => response.json())
     .then((json_content) => {console.log(json_content);});
 }
