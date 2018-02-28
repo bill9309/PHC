@@ -3,6 +3,7 @@ import accounts from './accounts'
 import eventRegistrations from './event-registrations'
 import services from './services'
 import logger from '../lib/logger'
+import forms from './forms'
 
 export default (router) => {
   router.use((ctx, next) => {
@@ -17,6 +18,7 @@ export default (router) => {
   router.use('/accounts', accounts.routes(), accounts.allowedMethods())
   router.use('/event-registrations', eventRegistrations.routes(), eventRegistrations.allowedMethods())
   router.use('/services', services.routes(), services.allowedMethods())
+  router.use('/formtype', forms.routes(), forms.allowedMethods())
 
   return router
 }

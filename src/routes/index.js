@@ -5,6 +5,7 @@ import CheckInRoute from './CheckIn'
 import CheckOutRoute from './CheckOut'
 import ServicesRoute from './Services'
 import AccountRoute from './Account'
+import FormsRoute from './Forms'
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
@@ -19,6 +20,7 @@ export const createRoutes = (store) => ({
     CheckInRoute(store),
     CheckOutRoute(store),
     ServicesRoute(store),
+    FormsRoute(store),
   ],
 })
 
