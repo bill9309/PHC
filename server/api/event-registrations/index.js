@@ -16,6 +16,7 @@ function handleError (ctx, error) {
 
 const router = Router()
 
+// ctx is the Koa Context encapsulating both the request and repsonse
 router
   .get('/:id', (ctx, next) => {
     return connect()
@@ -37,7 +38,7 @@ router
   })
   .post('/', (ctx, next) => {
     return connect()
-      .then(res => createEventRegistration(res.connection, ctx.request.body.fields))
+      .then(res => createEventRegistration(res.connection, ctx.request.body.fields)) //ctx.request.body.fields is the services
       .then(res => (ctx.body = res))
       .catch(error => handleError(ctx, error))
   })
