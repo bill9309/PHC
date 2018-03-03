@@ -12,6 +12,7 @@ import {
   transformToSalesforce,
 } from './transform'
 
+// TODO: WHERE IS THIS FUNCTION CALLED???
 export function createEventRegistration (connection, fields) {
   const deferred = Q.defer()
   const services = fields.medicalServices.concat(fields.supportServices)
@@ -21,6 +22,7 @@ export function createEventRegistration (connection, fields) {
     if (service in FORM_FIELD_TO_SALESFORCE_FIELD) {
       payload[FORM_FIELD_TO_SALESFORCE_FIELD[service]] = EventPicklistValues.APPLIED
     }
+    // TODO: but what happens if it's not in the conversion map and we want to add it?
   }
 
   payload['Account__c'] = fields.accountId
