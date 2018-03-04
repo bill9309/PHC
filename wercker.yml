@@ -34,9 +34,16 @@ build:
         code: |
           echo "node version $(node -v) running"
           echo "npm version $(npm -v) running"
-deploy:
+deploy-test:
   steps:
     - heroku-deploy:
-        key: $HEROKU_KEY
-        user: $HEROKU_USER
-        app-name: $HEROKU_APP_NAME
+        key: $HEROKU_KEY_TEST
+        user: $HEROKU_USER_TEST
+        app-name: $HEROKU_APP_NAME_TEST
+
+deploy-production:
+  steps:
+    - heroku-deploy:
+      key: $HEROKU_KEY_PRODUCTION
+      user: $HEROKU_USER_PRODUCTION
+      app-name: $HEROKU_APP_NAME_PRODUCTION
