@@ -8,7 +8,7 @@ export const Header = () => (
   <Navbar collapseOnSelect>
     <Navbar.Header>
       <Navbar.Brand>
-        <IndexLink to="/">Project Homeless Connect 69</IndexLink>
+        <IndexLink to="/">Project Homeless Connect 70</IndexLink>
       </Navbar.Brand>
       <Navbar.Toggle />
     </Navbar.Header>
