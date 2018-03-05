@@ -35,7 +35,7 @@ export const LEARNED_ABOUT_EVENT_CHOICES = [
   { value: 'Outreach', label: 'Outreach' },
   { value: 'I learned about it today', label: 'I learned about it today' },
   { value: 'I learned about it from a poster or flyer I saw at another service office', label: 'I learned about it from a poster or flyer I saw at another service office' },
-  { value: 'I learned about it at PHC’s office', label: 'I learned about it at PHC’s office' },
+  { value: 'I learned about it at PHC office', label: 'I learned about it at PHC office' },
 ]
 
 export const STAYING_CHOICES = [
