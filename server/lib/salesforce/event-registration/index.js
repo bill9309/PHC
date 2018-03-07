@@ -16,6 +16,7 @@ export function createEventRegistration (connection, fields) {
   const deferred = Q.defer()
   const healthEventInfo = [fields.hasSeenDoctorThisYear, fields.generalHealth, fields.skinHealth, fields.dignityAndConfidence, fields.dentalHygiene, fields.hygiene, fields.learnedAboutEvent]
   logger.debug('Creating event registration: healthInfo', { healthEventInfo })
+  logger.debug('Creating event registration: fields', { fields })
   const services = fields.medicalServices.concat(fields.supportServices)
   const payload = {}
   for (let healthEvent of healthEventInfo) {
