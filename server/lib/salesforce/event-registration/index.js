@@ -13,6 +13,7 @@ import {
 } from './transform'
 
 export function createEventRegistration (connection, fields) {
+  console.log(fields)
   const deferred = Q.defer()
   const services = fields.medicalServices.concat(fields.supportServices)
   const payload = {}
@@ -151,4 +152,3 @@ export function getEventRegistrationByAccount (connection, accountId) {
 
   return deferred.promise
 }
-
