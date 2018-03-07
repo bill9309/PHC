@@ -14,16 +14,18 @@ import {
 
 export function createEventRegistration (connection, fields) {
   const deferred = Q.defer()
-  const healthEventInfo = [fields.hasSeenDoctorThisYear, fields.generalHealth, fields.skinHealth, fields.dignityAndConfidence, fields.dentalHygiene, fields.hygiene, fields.learnedAboutEvent]
+  //TODO: Fix the value of fields
+  // const healthEventInfo = [fields.hasSeenDoctorThisYear, fields.generalHealth, fields.skinHealth, fields.dignityAndConfidence, fields.dentalHygiene, fields.hygiene, fields.learnedAboutEvent]
+// NONSERVICE_SALESFORCE_FIELD_TO_FORM_FIELD
   logger.debug('Creating event registration: healthInfo', { healthEventInfo })
   logger.debug('Creating event registration: fields', { fields })
   const services = fields.medicalServices.concat(fields.supportServices)
-  const payload = {}
-  for (let healthEvent of healthEventInfo) {
-    if(healthEvent in FORM_FIELD_TO_SALESFORCE_FIELD) {
-      payload[FORM_FIELD_TO_SALESFORCE_FIELD[healthEvent]] = fields[healthEvent]
-    }
-  }
+  const payload = transformToSalesforce(fields)
+  // for (let healthEvent of healthEventInfo) {
+  //   if(healthEvent in FORM_FIELD_TO_SALESFORCE_FIELD) {
+  //     payload[FORM_FIELD_TO_SALESFORCE_FIELD[healthEvent]] = fields[healthEvent]
+  //   }
+  // }
   for (let service of services) {
     // Passing services for now - we might want to mirror updateEventRegistration later - AZ
     if (service in FORM_FIELD_TO_SALESFORCE_FIELD) {
