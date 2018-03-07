@@ -13,16 +13,13 @@ import {
 } from './transform'
 
 export function createEventRegistration (connection, fields) {
-  /*
   const deferred = Q.defer()
-  const healthEventInfo = [fields.hasSeenDoctorThisYear, fields.generalHealth,
-  fields.skinHealth, fields.dignityAndConfidence,
-  fields.dentalHygiene, fields.hygiene, fields.learnedAboutEvent]
+  const healthEventInfo = [fields.hasSeenDoctorThisYear, fields.generalHealth, fields.skinHealth, fields.dignityAndConfidence, fields.dentalHygiene, fields.hygiene, fields.learnedAboutEvent]
   const services = fields.medicalServices.concat(fields.supportServices)
   const payload = {}
-  for (let healthEvent in healthEventInfo) {
+  for (let healthEvent of healthEventInfo) {
     if(healthEvent in FORM_FIELD_TO_SALESFORCE_FIELD) {
-      payload[FORM_FIELD_TO_SALESFORCE_FIELD[healthEvent]] = healthEventInfo[healthEvent]
+      payload[FORM_FIELD_TO_SALESFORCE_FIELD[healthEvent]] = fields[healthEvent]
     }
   }
   for (let service of services) {
@@ -57,7 +54,6 @@ export function createEventRegistration (connection, fields) {
       })
     }
   })
-  */
 }
 
 export function updateEventRegistration (connection, id, eventRegistration) {
