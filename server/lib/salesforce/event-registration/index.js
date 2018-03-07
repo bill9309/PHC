@@ -17,7 +17,7 @@ export function createEventRegistration (connection, fields) {
   //TODO: Fix the value of fields
   // const healthEventInfo = [fields.hasSeenDoctorThisYear, fields.generalHealth, fields.skinHealth, fields.dignityAndConfidence, fields.dentalHygiene, fields.hygiene, fields.learnedAboutEvent]
 // NONSERVICE_SALESFORCE_FIELD_TO_FORM_FIELD
-  logger.debug('Creating event registration: healthInfo', { healthEventInfo })
+  //logger.debug('Creating event registration: healthInfo', { healthEventInfo })
   logger.debug('Creating event registration: fields', { fields })
   const services = fields.medicalServices.concat(fields.supportServices)
   const payload = transformToSalesforce(fields)
