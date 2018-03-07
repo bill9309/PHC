@@ -19,9 +19,9 @@ export function createEventRegistration (connection, fields) {
   fields.dentalHygiene, fields.hygiene, fields.learnedAboutEvent]
   const services = fields.medicalServices.concat(fields.supportServices)
   const payload = {}
-  for (let healthEvent of healthEventInfo) {
+  for (let healthEvent in healthEventInfo) {
     if(healthEvent in FORM_FIELD_TO_SALESFORCE_FIELD) {
-      payload[FORM_FIELD_TO_SALESFORCE_FIELD[service]] = healthEventInfo[healthEvent]
+      payload[FORM_FIELD_TO_SALESFORCE_FIELD[healthEvent]] = healthEventInfo[healthEvent]
     }
   }
   for (let service of services) {
