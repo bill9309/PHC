@@ -14,9 +14,9 @@ import {
 
 export function createEventRegistration (connection, fields) {
   const deferred = Q.defer()
-  const healthEventInfo = [fields.hasSeenDoctorThisYear, fields.generalHealth,
-  fields.skinHealth, fields.dignityAndConfidence,
-  fields.dentalHygiene, fields.hygiene, fields.learnedAboutEvent]
+  //const healthEventInfo = [fields.hasSeenDoctorThisYear, fields.generalHealth,
+  //fields.skinHealth, fields.dignityAndConfidence,
+  //fields.dentalHygiene, fields.hygiene, fields.learnedAboutEvent]
   const services = (fields.medicalServices.concat(fields.supportServices)).concat(healthEventInfo)
   const payload = {}
   for (let service of services) {
