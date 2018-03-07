@@ -24,12 +24,12 @@ export function transformFromSalesforce (eventRegistration) {
             || attribute === 'Unique_services__c'
             || attribute === 'hasUniqueService__c'
             || attribute === 'wellBeing__c'
-            || attribute === 'Learned_About_Event__c',
-            || attribute === 'Seen_Doctor__c',
-            || attribute === 'General_health__c',
-            || attribute === 'Skin_Health__c',
-            || attribute === 'Dignity_Confidence__c',
-            || attribute === 'Dental_Hygiene__c',
+            || attribute === 'Learned_About_Event__c'
+            || attribute === 'Seen_Doctor__c'
+            || attribute === 'General_health__c'
+            || attribute === 'Skin_Health__c'
+            || attribute === 'Dignity_Confidence__c'
+            || attribute === 'Dental_Hygiene__c'
             || attribute === 'Hygiene__c'
         )
     ) {
