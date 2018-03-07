@@ -17,6 +17,13 @@ export function createEventRegistration (connection, fields) {
   const services = fields.medicalServices.concat(fields.supportServices)
   const payload = transformToSalesforce(fields)
 
+  for (let service of services) {
+    // Passing services for now - we might want to mirror updateEventRegistration later - AZ
+    if (service in FORM_FIELD_TO_SALESFORCE_FIELD) {
+      payload[FORM_FIELD_TO_SALESFORCE_FIELD[service]] = EventPicklistValues.APPLIED
+    }
+  }
+
   payload['Account__c'] = fields.accountId
   payload['PHC_Event__c'] = PHC_EVENT_ID
 
