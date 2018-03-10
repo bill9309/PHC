@@ -36,7 +36,7 @@ router
       .then(res => (ctx.body = res))
       .catch(error => handleError(ctx, error))
   })
-  .post('/', (ctx, next) => {
+  .post('/', (ctx, next) => { // ASK: does Koa Context (ctx, one per request) get passed in with post request, or...
     return connect()
       .then(res => createEventRegistration(res.connection, ctx.request.body.fields)) //ctx.request.body.fields is the services
       .then(res => (ctx.body = res))
