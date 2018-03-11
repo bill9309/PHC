@@ -54,7 +54,7 @@ export const FORM_FIELD_TO_SALESFORCE_FIELD = {
   'Medi-Cal': 'Medi_Cal__c',
   //'Lifeline Cell Phones': 'Lifeline_Cell__c',
   //'Pet Care': 'Pet_Care__c',
-  'Pet Sitting': 'Pet_Sitting__c'
+  'Pet Sitting': 'Pet_Sitting__c',
   'Phone Calls and Voicemail': 'Phone_Calls__c',
   'Photo Portraits': 'Portraits__c',
   'Senior Services': 'Senior_Services__c',
