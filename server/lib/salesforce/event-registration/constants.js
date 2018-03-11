@@ -31,7 +31,7 @@ export const FORM_FIELD_TO_SALESFORCE_FIELD = {
   'Reading Glasses': 'Vision_Readers__c',
   'Prescription Glasses': 'Prescription__c',
   'TB Testing': 'TB_Testing__c',
-  'Vision Screenings': 'Vision_Screenings__c',
+  'Vision Screenings': 'Vision_Screening__c',
 
   // Support Services
   'Adult Probation': 'Adult_Probation__c',
