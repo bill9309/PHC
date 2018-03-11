@@ -29,9 +29,9 @@ export const FORM_FIELD_TO_SALESFORCE_FIELD = {
   'Podiatry': 'Podiatry__c',
   // 'Vision Readers': 'Vision_Readers__c',
   'Reading Glasses': 'Vision_Readers__c',
-  'Prescription Glasses': 'Vision_Prescription__c',
+  'Prescription Glasses': 'Prescription__c',
   'TB Testing': 'TB_Testing__c',
-  'Vision Screenings': 'Vision_Prescription__c',
+  'Vision Screenings': 'Vision_Screenings__c',
 
   // Support Services
   'Adult Probation': 'Adult_Probation__c',
@@ -53,7 +53,8 @@ export const FORM_FIELD_TO_SALESFORCE_FIELD = {
   'Legal': 'Legal__c',
   'Medi-Cal': 'Medi_Cal__c',
   //'Lifeline Cell Phones': 'Lifeline_Cell__c',
-  'Pet Care': 'Pet_Care__c',
+  //'Pet Care': 'Pet_Care__c',
+  'Pet Sitting': 'Pet_Sitting__c'
   'Phone Calls and Voicemail': 'Phone_Calls__c',
   'Photo Portraits': 'Portraits__c',
   'Senior Services': 'Senior_Services__c',
