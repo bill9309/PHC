@@ -245,7 +245,9 @@ export const CheckOutForm = (props) => {
   const serviceFields = Object.keys(fields)
     .filter(fieldName => (fieldName !== 'Satisfaction' && fieldName !== 'Notes' && fieldName !== 'isOverallSatisfied'
           && fieldName !== 'hasUniqueService' && fieldName !== 'uniqueServices' && fieldName !== 'recommendation'
-          && fieldName !== 'wellBeing'))
+          && fieldName !== 'wellBeing' && fieldName !== 'learnedAboutEvent' && fieldName !== 'hasSeenDoctorThisYear'
+          && fieldName !== 'skinHealth' && fieldName !== 'dignityAndConfidence' && fieldName !== 'hygiene'
+          && fieldName !== 'dentalHygiene' && fieldName !== 'generalHealth'))
     .reduce(
       (_fields, fieldName) => {
         _fields[fieldName] = fields[fieldName]
