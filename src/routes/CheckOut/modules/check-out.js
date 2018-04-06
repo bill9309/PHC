@@ -32,6 +32,7 @@ function updateEventRegistrationFailure (error) {
   }
 }
 
+// ALSO HERE
 export function updateEventRegistration ({ fields, id }) {
   return dispatch => {
     dispatch(updateEventRegistrationRequest())

@@ -40,7 +40,7 @@ const config = {
       : process.env.SANDBOX_PHC_EVENT_ID
   ),
 
-  login_password: process.env.LOGIN_PASSWORD,
+  login_password: '', //process.env.LOGIN_PASSWORD,
 
   // ----------------------------------
   // Project Structure

@@ -112,6 +112,7 @@ function createOrUpdateAccount ({ fields, id }) {
   })
 }
 
+// THIS IS WHERE WE SEND OUR POST REQUEST TO THE EVENT REGISTRATION ROUTE
 function createOrUpdateEventRegistration ({ fields, id }) {
   let method = id ? 'PUT' : 'POST'
   let endpoint = id ? `/api/event-registrations/${id}` : '/api/event-registrations'
@@ -131,6 +132,7 @@ function createOrUpdateEventRegistration ({ fields, id }) {
   })
 }
 
+// THIS USES THE FUNCTION FROM ABOVE
 function _updateInfo ({ fields, id }) {
   return createOrUpdateAccount({ fields, id })
     .then(response => response.json())
