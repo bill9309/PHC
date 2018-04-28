@@ -151,6 +151,51 @@ export function getEventRegistrationByAccount (connection, accountId) {
       }
     })
 
+    // TODO: WHERE IS THIS FUNCTION CALLED???
+export function createEvent (connection, fields) {
+  // const deferred = Q.defer()
+  // const services = fields.medicalServices.concat(fields.supportServices)
+  // const payload = {}
+  // for (let service of services) {
+  //   // Passing services for now - we might want to mirror updateEventRegistration later - AZ
+  //   if (service in FORM_FIELD_TO_SALESFORCE_FIELD) {
+  //     payload[FORM_FIELD_TO_SALESFORCE_FIELD[service]] = EventPicklistValues.APPLIED
+  //   }
+  //   // TODO: but what happens if it's not in the conversion map and we want to add it?
+  // }
+
+  // payload['Account__c'] = fields.accountId
+  // payload['PHC_Event__c'] = PHC_EVENT_ID
+
+  // logger.debug('Creating event registration: requesting', { payload })
+
+  connection.sobject("PHC_Event").create({"Field Label": "CodeTheChange", "API Name": "test_c", "Data Type": "Checkbox"}, function(err, ret) {
+    if (err || !ret.success){ return console.error(err, ret); }
+    console.log()
+  });
+
+  // connection.sobject(EventRegistration).create(payload, (error, registration) => {
+  //   logger.debug('Creating event registration: request complete', { registration })
+
+  //   if (error || !registration.success) {
+  //     logger.error('Error creating registration', { error })
+  //     deferred.reject({
+  //       message: 'Error creating registration.',
+  //       error,
+  //     })
+  //   } else {
+  //     deferred.resolve({
+  //       message: `Successfully created registration ${registration.id}.`,
+  //       payload: {
+  //         registration: {
+  //           id: registration.id,
+  //         },
+  //       },
+  //     })
+  //   }
+  // })
+  }
+
   return deferred.promise
 }
 
