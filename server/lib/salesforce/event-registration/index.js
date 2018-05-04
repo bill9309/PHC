@@ -150,6 +150,9 @@ export function getEventRegistrationByAccount (connection, accountId) {
         logger.error(e)
       }
     })
+    return deferred.promise
+  }
+
 
     // TODO: WHERE IS THIS FUNCTION CALLED???
 export function createEvent (connection, fields) {
@@ -171,7 +174,7 @@ export function createEvent (connection, fields) {
 
   connection.sobject("PHC_Event").create({"Field Label": "CodeTheChange", "API Name": "test_c", "Data Type": "Checkbox"}, function(err, ret) {
     if (err || !ret.success){ return console.error(err, ret); }
-    console.log()
+    logger.debug('PHC Event successfully created');
   });
 
   // connection.sobject(EventRegistration).create(payload, (error, registration) => {
@@ -195,7 +198,3 @@ export function createEvent (connection, fields) {
   //   }
   // })
   }
-
-  return deferred.promise
-}
-
