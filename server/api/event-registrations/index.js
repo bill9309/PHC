@@ -11,6 +11,7 @@ import {
 function handleError (ctx, error) {
   // TODO: Differentiate different types of errors, and return different codes accordingly.
   logger.error(`${error.message}`)
+  console.log(error);
   console.log("=======================================================wut");
   ctx.throw(error.message, 503)
 }
