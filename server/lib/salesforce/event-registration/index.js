@@ -156,7 +156,6 @@ export function getEventRegistrationByAccount (connection, accountId) {
 
     // TODO: WHERE IS THIS FUNCTION CALLED???
 export function createEvent (connection, fields) {
-  console.log("HIIIIII");
   // const deferred = Q.defer()
   // const services = fields.medicalServices.concat(fields.supportServices)
   // const payload = {}
@@ -172,13 +171,24 @@ export function createEvent (connection, fields) {
   // payload['PHC_Event__c'] = PHC_EVENT_ID
 
   // logger.debug('Creating event registration: requesting', { payload })
+  ///api/even-registrations/test
+  connection.sobject("PHC_Event").retrieve("a0R29000000jRj5", function(err, ret) {
+    logger.debug('Fetching PHC event: request complete', ret)
 
-  connection.sobject("PHC_Event").create({"Field Label": "CodeTheChange", "API Name": "test_c", "Data Type": "Checkbox"}, function(err, ret) {
+    if (error) {
+      logger.error('Fetching event: error', {error});
+    } else {
+      logger.debug("Event fetched:")
+      logger.debug(ret);
+    }
+  });
+
+  connection.sobject("PHC_Event").create({"API Name": "test_c", "Data Type": "Checkbox"}, function(err, ret) {
     if (err || !ret.success){ return console.error(err, ret); }
     logger.debug('PHC Event successfully created');
   });
 
-  // connection.sobject(EventRegistration).create(payload, (error, registration) => {
+    // connection.sobject(EventRegistration).create(payload, (error, registration) => {
   //   logger.debug('Creating event registration: request complete', { registration })
 
   //   if (error || !registration.success) {
