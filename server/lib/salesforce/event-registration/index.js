@@ -156,6 +156,7 @@ export function getEventRegistrationByAccount (connection, accountId) {
 
     // TODO: WHERE IS THIS FUNCTION CALLED???
 export function createEvent (connection, fields) {
+  console.log("HIIIIII");
   // const deferred = Q.defer()
   // const services = fields.medicalServices.concat(fields.supportServices)
   // const payload = {}

@@ -11,6 +11,7 @@ import {
 function handleError (ctx, error) {
   // TODO: Differentiate different types of errors, and return different codes accordingly.
   logger.error(`${error.message}`)
+  console.log("=======================================================wut");
   ctx.throw(error.message, 503)
 }
 
@@ -39,6 +40,12 @@ router
   .post('/', (ctx, next) => { // ASK: does Koa Context (ctx, one per request) get passed in with post request, or...
     return connect()
       .then(res => createEventRegistration(res.connection, ctx.request.body.fields)) //ctx.request.body.fields is the services
+      .then(res => (ctx.body = res))
+      .catch(error => handleError(ctx, error))
+  })
+  .get('/test', (ctx, next) => {
+    return connect()
+      .then(res => createEvent(res.connection, ctx.request.body.fields))
       .then(res => (ctx.body = res))
       .catch(error => handleError(ctx, error))
   })
