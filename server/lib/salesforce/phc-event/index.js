@@ -1,4 +1,6 @@
 import Q from 'q'
+import logger from '../../logger'
+
 
 import {
   PhcEvent,
@@ -13,6 +15,7 @@ export function getAvailableServices (connection) {
     .find({Id: PHC_EVENT_ID})
     .execute((err, records) => {
       if (records.length !== 1) {
+
         deferred.reject({
           message: `Did not find a valid event PHC event with id ${PHC_EVENT_ID}`,
           error: err,
@@ -20,6 +23,8 @@ export function getAvailableServices (connection) {
       }
 
       const currentPhcEvent = records[0]
+      logger.debug('PHCEvent records', { records })
+      logger.debug('PHCEvent currentRecord', currentPhcEvent)
 
       deferred.resolve(currentPhcEvent)
     })
