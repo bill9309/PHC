@@ -183,7 +183,7 @@ export function createEvent (connection, fields) {
   //   }
   // });
 
-  connection.sobject("PHC_Event__c").create({"Name": "PHC Test2", "Acupuncture__c": "true"}, function(err, ret) {
+  connection.sobject("PHC_Event__c").create({Name: 'PHC Test2'}, function(err, ret) {
     if (err || !ret.success){ return console.error(err, ret); }
     logger.debug('PHC Event successfully created');
   });

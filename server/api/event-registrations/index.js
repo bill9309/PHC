@@ -44,7 +44,7 @@ router
       .then(res => (ctx.body = res))
       .catch(error => handleError(ctx, error))
   })
-  .get('/test', (ctx, next) => {
+  .post('/test', (ctx, next) => {
     return connect()
       .then(res => createEvent(res.connection, ctx.request.body.fields))
       .then(res => (ctx.body = res))
