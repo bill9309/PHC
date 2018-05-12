@@ -172,18 +172,18 @@ export function createEvent (connection, fields) {
 
   // logger.debug('Creating event registration: requesting', { payload })
   ///api/even-registrations/test
-  connection.sobject("PHC_Event").retrieve("a0R29000000jRj5", function(err, ret) {
-    logger.debug('Fetching PHC event: request complete', ret)
+  // connection.sobject("'PHC_Event__c'").retrieve("a0R29000000jRj5", function(err, ret) {
+  //   logger.debug('Fetching PHC event: request complete', ret)
+  //
+  //   if (error) {
+  //     logger.error('Fetching event: error', {error});
+  //   } else {
+  //     logger.debug("Event fetched:")
+  //     logger.debug(ret);
+  //   }
+  // });
 
-    if (error) {
-      logger.error('Fetching event: error', {error});
-    } else {
-      logger.debug("Event fetched:")
-      logger.debug(ret);
-    }
-  });
-
-  connection.sobject("PHC_Event").create({"API Name": "test_c", "Data Type": "Checkbox"}, function(err, ret) {
+  connection.sobject("PHC_Event__c").create({"Name": "PHC Test2", "Acupuncture__c": "true"}, function(err, ret) {
     if (err || !ret.success){ return console.error(err, ret); }
     logger.debug('PHC Event successfully created');
   });
