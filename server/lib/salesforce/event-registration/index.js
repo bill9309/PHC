@@ -185,7 +185,11 @@ export function createEvent (connection, fields) {
   var payload = {Name: 'PHC Test2'}
   connection.sobject("PHC_Event__c").create(payload, function(err, ret) {
     if (err || !ret.success){
-      return console.error(err, ret);
+      logger.error('Error creating event')
+      deferred.reject({
+        message: 'Error creating event.',
+        error,
+      })
     } else {
       deferred.resolve({
           message: `Successfully created PHC event`,
