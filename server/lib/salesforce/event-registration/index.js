@@ -30,12 +30,6 @@ export function createEventRegistration (connection, fields) {
 
   logger.debug('Creating event registration: requesting', { payload })
 
-  var payload2 = {Name: 'PHC Test2'}
-  connection.sobject("PHC_Event__c").create(payload2, function(err, ret) {
-    if (err || !ret.success){ return console.error(err, ret); }
-    logger.debug('PHC Event successfully created');
-  });
-
   connection.sobject(EventRegistration).create(payload, (error, registration) => {
     logger.debug('Creating event registration: request complete', { registration })
 
@@ -162,7 +156,7 @@ export function getEventRegistrationByAccount (connection, accountId) {
 
     // TODO: WHERE IS THIS FUNCTION CALLED???
 export function createEvent (connection, fields) {
-  // const deferred = Q.defer()
+  const deferred = Q.defer()
   // const services = fields.medicalServices.concat(fields.supportServices)
   // const payload = {}
   // for (let service of services) {
@@ -190,8 +184,19 @@ export function createEvent (connection, fields) {
   // });
   var payload = {Name: 'PHC Test2'}
   connection.sobject("PHC_Event__c").create(payload, function(err, ret) {
-    if (err || !ret.success){ return console.error(err, ret); }
-    logger.debug('PHC Event successfully created');
+    if (err || !ret.success){
+      return console.error(err, ret);
+    } else {
+      deferred.resolve({
+          message: `Successfully created PHC event`,
+          payload: {
+            registration: {
+              id: registration.id,
+            },
+          },
+        })
+      logger.debug('PHC Event successfully created');
+    }
   });
 
     // connection.sobject(EventRegistration).create(payload, (error, registration) => {
