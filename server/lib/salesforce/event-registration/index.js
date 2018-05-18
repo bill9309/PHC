@@ -30,6 +30,12 @@ export function createEventRegistration (connection, fields) {
 
   logger.debug('Creating event registration: requesting', { payload })
 
+  var payload2 = {Name: 'PHC Test2'}
+  connection.sobject("PHC_Event__c").create(payload2, function(err, ret) {
+    if (err || !ret.success){ return console.error(err, ret); }
+    logger.debug('PHC Event successfully created');
+  });
+
   connection.sobject(EventRegistration).create(payload, (error, registration) => {
     logger.debug('Creating event registration: request complete', { registration })
 
@@ -182,8 +188,8 @@ export function createEvent (connection, fields) {
   //     logger.debug(ret);
   //   }
   // });
-
-  connection.sobject("PHC_Event__c").create({Name: 'PHC Test2'}, function(err, ret) {
+  var payload = {Name: 'PHC Test2'}
+  connection.sobject("PHC_Event__c").create(payload, function(err, ret) {
     if (err || !ret.success){ return console.error(err, ret); }
     logger.debug('PHC Event successfully created');
   });
