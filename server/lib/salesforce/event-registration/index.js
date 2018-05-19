@@ -25,6 +25,12 @@ export function createEventRegistration (connection, fields) {
     // TODO: but what happens if it's not in the conversion map and we want to add it?
   }
 
+  connection.sobject(EventRegistration).describe(function(err, meta) {
+    if(err) {return console.error(err);}
+    console.log(meta);
+    console.log('-----------------------------------------');
+  });
+
   payload['Account__c'] = fields.accountId
   payload['PHC_Event__c'] = PHC_EVENT_ID
 
