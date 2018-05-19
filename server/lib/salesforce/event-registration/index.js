@@ -27,7 +27,9 @@ export function createEventRegistration (connection, fields) {
 
   connection.sobject(EventRegistration).describe(function(err, meta) {
     if(err) {return console.error(err);}
-    console.log(meta);
+    console.log("Number of fields:" + meta.fields.length);
+    console.log('-----------------------------------------');
+    console.log(meta.fields);
     console.log('-----------------------------------------');
   });
 
