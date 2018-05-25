@@ -25,14 +25,25 @@ export function createEventRegistration (connection, fields) {
     // TODO: but what happens if it's not in the conversion map and we want to add it?
   }
 
-  connection.sobject(EventRegistration).describe(function(err, meta) {
-    if(err) {return console.error(err);}
-    console.log("Number of fields:" + meta.fields.length);
-    console.log('-----------------------------------------');
-    console.log(meta.fields);
-    console.log('-----------------------------------------');
+  //Added metadata code
+  var metadata = {
+    fullName: 'Event_Registration__c.SampleField__c',
+    length: '75',
+    type: 'Text',
+    label: 'Sample Field'
+  };
+  console.log(metadata);
+  connection.metadata.create('CustomField', metadata , function(err, result){
+      if (err) {
+          console.error(err);
+      } else {
+          console.log(result);
+      }
   });
 
+
+  // connection.metadata.read('CustomField', ['Event_Registration__c.SampleField__c'] , function(err, result){
+  // });
   payload['Account__c'] = fields.accountId
   payload['PHC_Event__c'] = PHC_EVENT_ID
 
