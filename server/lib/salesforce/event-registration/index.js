@@ -25,14 +25,42 @@ export function createEventRegistration (connection, fields) {
     // TODO: but what happens if it's not in the conversion map and we want to add it?
   }
 
-  //Added metadata code
+  //describes the custom object metadata
+  // connection.sobject(EventRegistration).describe(function(err, meta) {
+  //    if(err) {return console.error(err);}
+  //    console.log('-----------------------------------------');
+  //    console.log(meta.fields[81].picklist);
+  //    console.log('-----------------------------------------');
+  //  });
+
+  // code to read the metadata
+  connection.metadata.read('CustomField', ['Event_Registration__c.CalFresh__c'], function(err,result) {
+    if(err) {
+        console.log(err);
+    } else {
+        console.log("Data from custom field");
+        console.log(result)
+        console.log(result.picklist);
+    }
+  });
+  //Added metadata code to add picklist service of event registration
   var metadata = {
-    fullName: 'Event_Registration__c.SampleField__c',
-    length: '75',
-    type: 'Text',
-    label: 'Sample Field'
+    fullName: 'Event_Registration__c.SamplePickListField__c',
+    type: 'Picklist',
+    label: 'Sample PickList Field',
+    picklist: {picklistValues: [
+      {fullName: 'None',
+       default: 'true' },
+      {fullName: 'Applied',
+        default: 'false'},
+      {fullName: 'Received',
+       default: 'false'},
+      {fullName: 'Drop in',
+       default: 'false'}],
+              sorted : 'false'}
   };
   console.log(metadata);
+  //creates custom field
   connection.metadata.create('CustomField', metadata , function(err, result){
       if (err) {
           console.error(err);
@@ -42,8 +70,6 @@ export function createEventRegistration (connection, fields) {
   });
 
 
-  // connection.metadata.read('CustomField', ['Event_Registration__c.SampleField__c'] , function(err, result){
-  // });
   payload['Account__c'] = fields.accountId
   payload['PHC_Event__c'] = PHC_EVENT_ID
 
@@ -201,6 +227,7 @@ export function createEvent (connection, fields) {
   //     logger.debug(ret);
   //   }
   // });
+  //Adds code to create Event
   var payload = {Name: 'PHC Test2'}
   connection.sobject("PHC_Event__c").create(payload, function(err, ret) {
     if (err || !ret.success){
