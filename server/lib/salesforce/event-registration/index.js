@@ -24,30 +24,61 @@ export function createEventRegistration (connection, fields) {
     }
     // TODO: but what happens if it's not in the conversion map and we want to add it?
   }
+  console.log("Event registration payload");
+  console.log(payload);
 
   //describes the custom object metadata
-  // connection.sobject(EventRegistration).describe(function(err, meta) {
+  // connection.sobject('PHC_Event__c').describe(function(err, meta) {
   //    if(err) {return console.error(err);}
   //    console.log('-----------------------------------------');
-  //    console.log(meta.fields[81].picklist);
+  //    console.log(meta);
+  //    console.log(meta.fields[3]);
+  //    console.log(meta.fields[3].checklist);
   //    console.log('-----------------------------------------');
   //  });
 
-  // code to read the metadata
-  connection.metadata.read('CustomField', ['Event_Registration__c.CalFresh__c'], function(err,result) {
-    if(err) {
-        console.log(err);
-    } else {
-        console.log("Data from custom field");
-        console.log(result)
-        console.log(result.picklist);
-    }
-  });
-  //Added metadata code to add picklist service of event registration
+// --------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------
+// CODE FOR EVENT REGISTRATION AND PHC EVENT FOR ADMIN PLATFORM
+// --------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------
+
+//Adds code to add new service to PHC event (note: service here is in the form of a checkbox) //
+ var metadata = {
+   fullName: 'PHC_Event__c.NewSampleServiceField__c',
+   type: 'Checkbox',
+   label: 'Sample Service Field',
+   defaultValue: 'false',
+   writeRequiresMasterRead :'true'
+ };
+
+ connection.metadata.create('CustomField', metadata , function(err, result){
+     if (err) {
+         console.error(err);
+     } else {
+         console.log(result);
+     }
+ });
+ //code to add new service to PHC event ends here//
+
+//Adds code to CREATE NEW PHC event with acupuncture checked //
+var event_payload = {Name: 'PHC TestSampleEvent4', Acupuncture__c: true}
+connection.sobject("PHC_Event__c").create(event_payload, function(err, ret) {
+  if (err || !ret.success){
+    logger.error('Error creating event')
+  } else {
+    logger.debug('PHC Event successfully created');
+  }
+});
+//code to CREATE NEW PHC event ends here//
+
+//CODE TO ADD SERVICE TO EVENT REGISTRATION (which applies to all of the records): equiv to adding a column in the table //
+
+  //Code here to add NewSamplePickListField custom field to PHC event registration
   var metadata = {
-    fullName: 'Event_Registration__c.SamplePickListField__c',
+    fullName: 'Event_Registration__c.NewSampleServiceField__c',
     type: 'Picklist',
-    label: 'Sample PickList Field',
+    label: 'Sample Service Field',
     picklist: {picklistValues: [
       {fullName: 'None',
        default: 'true' },
@@ -59,8 +90,9 @@ export function createEventRegistration (connection, fields) {
        default: 'false'}],
               sorted : 'false'}
   };
-  console.log(metadata);
-  //creates custom field
+
+
+  //creates custom field and add it to event registration
   connection.metadata.create('CustomField', metadata , function(err, result){
       if (err) {
           console.error(err);
@@ -69,6 +101,62 @@ export function createEventRegistration (connection, fields) {
       }
   });
 
+  /////////CODE TO ADD SERVICE TO EVENT REGISTRATION ENDS HERE (which applies to all of the records)/////////////////
+
+  // --------------------------------------------------------------------------------------------------------------
+  // CODE TO READ METADATA VALUES (metada describes a custom object(such as event registration) or custom field (such as services))
+  // --------------------------------------------------------------------------------------------------------------
+
+  // code to read the metadata of a custom field (such as a service called CalFresh from Event registration)
+  connection.metadata.read('CustomField', ['Event_Registration__c.CalFresh__c'], function(err,result) {
+    if(err) {
+        console.log(err);
+    } else {
+        console.log("Data from custom field");
+
+        console.log(result)
+        /* console.log(result) prints out info below
+        { fullName: 'Event_Registration__c.CalFresh__c',
+          externalId: 'false',
+          label: 'CalFresh',
+          picklist:
+           { picklistValues: [ [Object], [Object], [Object], [Object] ],
+             sorted: 'false' },
+          required: 'false',
+          trackTrending: 'false',
+          type: 'Picklist' }
+        */
+        console.log(result.picklist);
+        /*  console.log(result.picklist) prints out info below
+          { picklistValues:
+             [ { fullName: 'None', default: 'true' },
+               { fullName: 'Applied', default: 'false' },
+               { fullName: 'Received', default: 'false' },
+               { fullName: 'Drop in', default: 'false' } ],
+            sorted: 'false' }
+        */
+    }
+  });
+
+  // --------------------------------------------------------------------------------------------------------------
+  // CODE TO READ METADATA VALUES ends here
+  // --------------------------------------------------------------------------------------------------------------
+
+  // code to read the metadata of a custom field (such as the field from PHC Event called Acupuncture)
+  connection.metadata.read('CustomField', ['PHC_Event__c.Acupuncture__c'], function(err,result) {
+    if(err) {
+        console.log(err);
+    } else {
+        console.log("Data from event field");
+        console.log(result)
+    }
+  });
+
+  // --------------------------------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------------------------------
+  // CODE FOR EVENT REGISTRATION AND PHC EVENT FOR ADMIN PLATFORM ENDS HERE
+  // --------------------------------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------------------------------
 
   payload['Account__c'] = fields.accountId
   payload['PHC_Event__c'] = PHC_EVENT_ID
@@ -144,6 +232,7 @@ export function getEventRegistration (connection, id) {
         error,
       })
     } else {
+      console.log(transformFromSalesforce(eventRegistration));
       deferred.resolve({
         message: `Successfully retrieved event registration ${id}`,
         payload: {
