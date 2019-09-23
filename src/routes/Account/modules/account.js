@@ -159,7 +159,7 @@ export function loadEventRegistration(accountId) {
 
 export function closeModal() {
   return {
-    type: CLOSE_MODAL
+    type: CLOSE_MODAL,
   }
 }
 
@@ -167,7 +167,7 @@ export const actions = {
   loadAccountData,
   loadEventRegistration,
   searchForAccount,
-  closeModal
+  closeModal,
 }
 
 const ACTION_HANDLERS = {
